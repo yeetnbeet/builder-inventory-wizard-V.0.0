@@ -47,17 +47,19 @@ def syncronize(config):
 
 def output(config):
     outputCSV = config.outputFile
-    print(outputCSV)
+    with open(outputCSV,mode='w') as csvFile:
+        writer = csv.writer(csvFile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(config.fields)
+        for i in config.Abuilders:
+            writer.writerow(i)
 
 
 if __name__ == "__main__":
     C = config()
     dataINIT(C)
+    print("\nTEST_LOGS:\n")
     syncronize(C)
     output(C)
-
-    
-
     print("\n\n\n")
 
     
