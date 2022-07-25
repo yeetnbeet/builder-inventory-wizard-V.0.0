@@ -21,9 +21,13 @@ First Check to make sure you have the proper dependancies installed:
 `python3 --version`
 `git --version`
 Navigate to the desired directory in terminal and glone the git repository: 
+
 `git clone https://github.com/yeetnbeet/builder-inventory-wizard-V.0.0`
+
 Navigate into the program directory find the name using:
+
 `ls` then use `cd foldername`
+
 > by default it has the proper test files so you can run the program
 >and make sure everything is working properly
 
