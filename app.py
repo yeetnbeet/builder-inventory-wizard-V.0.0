@@ -1,11 +1,11 @@
-from cmath import nan
 import csv ;
 
 #config is the object that contains file locations and data for manipulations
 class config :
-    def __init__(self, builderFile = "./BUILDER.csv",framesFile = "./FRAMES.csv"):
+    def __init__(self, builderFile = "./BUILDER.csv",framesFile = "./FRAMES.csv",outputFile = "./OUTPUT.csv"):
         self.builderFile = builderFile
         self.framesFile = framesFile
+        self.outputFile = outputFile
     Aframes = []
     Abuilders = []
     fields = []
@@ -32,23 +32,33 @@ def dataINIT(config):
 def syncronize(config):
     Aframes = config.Aframes
     Abuilders = config.Abuilders
-    
+    for i in Abuilders:
+        for r in Aframes:
+            if r[8] == i[8]:
+                if r[11] != i[11]:
+                    print("*Triggered* PC SKU: ",i[8]," Changed: ",i[11]," to: ",r[11])
+                    i[11] = r[11]    
+                if r[12] != i[12]:
+                    print("*Triggered* SLC SKU: ",i[8]," Changed: ",i[12]," to: ",r[12])
+                    i[12] = r[12]
+                if r[13] != i[13]:
+                    print("*Triggered* WH SKU: ",i[8]," Changed: ",i[13]," to: ",r[13])
+                    i[13] = r[13]
+
+def output(config):
+    outputCSV = config.outputFile
+    print(outputCSV)
 
 
 if __name__ == "__main__":
     C = config()
     dataINIT(C)
-    print()
-    print(C.fields)
-    for l in C.Aframes:
-        print(l)
-
     syncronize(C)
+    output(C)
 
-    print()
-    print(C.fields)
-    for l in C.Aframes:
-        print(l)
+    
+
+    print("\n\n\n")
 
     
     
