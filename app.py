@@ -35,15 +35,15 @@ def syncronize(config):
     for i in Abuilders:
         for r in Aframes:
             if r[8] == i[8]:
-                if r[11] != i[11]:
-                    print("*Triggered* PC SKU: ",i[8]," Changed: ",i[11]," to: ",r[11])
-                    i[11] = r[11]    
-                if r[12] != i[12]:
-                    print("*Triggered* SLC SKU: ",i[8]," Changed: ",i[12]," to: ",r[12])
-                    i[12] = r[12]
-                if r[13] != i[13]:
+                if r[16] != i[16] and r[11] == "Contender Park City" and i[11] == "Contender Park City":
+                    print("*Triggered* PC SKU: ",i[8]," Changed: ",i[16]," to: ",r[16])
+                    i[16] = r[16]    
+                if r[16] != i[16] and r[11] == "Contender Salt Lake City" and i[11] == "Contender Salt Lake City":
+                    print("*Triggered* SLC SKU: ",i[8]," Changed: ",i[16]," to: ",r[16])
+                    i[16] = r[16]
+                if r[16] != i[16] and r[11] == "Contender Warehouse" and i[11] == "Contender Warehouse":
                     print("*Triggered* WH SKU: ",i[8]," Changed: ",i[13]," to: ",r[13])
-                    i[13] = r[13]
+                    i[16] = r[16]
 
 def output(config):
     outputCSV = config.outputFile
